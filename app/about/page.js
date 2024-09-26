@@ -15,10 +15,10 @@ export default function About() {
             The Future of Reverse Auctions. Seamlessly connecting buyers and sellers.
           </p>
           <p className="text-lg">
-            At Jazzee, we're redefining SAAS procurement with streamlined efficiency. Our platform empowers businesses to make smarter procurement decisions by enabling seamless connections between buyers and sellers through reverse auctions.
+            At Jazzee, we&apos;re redefining SAAS procurement with streamlined efficiency. Our platform empowers businesses to make smarter procurement decisions by enabling seamless connections between buyers and sellers through reverse auctions.
           </p>
           <p className="text-lg">
-            Whether you're looking to cut costs, increase transparency, or improve your procurement strategy, Jazzee is your all-in-one solution for smarter, more efficient decision-making.
+            Whether you&apos;re looking to cut costs, increase transparency, or improve your procurement strategy, Jazzee is your all-in-one solution for smarter, more efficient decision-making.
           </p>
         </section>
       </main>
