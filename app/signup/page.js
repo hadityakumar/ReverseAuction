@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signup() {
   const [name, setName] = useState(''); // State for name
@@ -8,6 +10,18 @@ export default function Signup() {
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('buyer'); // Default to 'buyer'
   const router = useRouter();
+
+
+  const notify = () => toast.success('User Created Successfully', {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -20,7 +34,11 @@ export default function Signup() {
     const data = await response.json();
     if (response.ok) {
       localStorage.setItem('token', data.token);
-      router.push('/login'); 
+      notify();
+      setTimeout(() => {
+        router.push('/login');
+      }, 1000);
+       
     } else {
       alert(data.error);
     }
@@ -28,6 +46,18 @@ export default function Signup() {
 
   return (
     <>
+    <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <main className="mx-auto flex h-[80%] w-[30%] items-center justify-center bg-black bg-opacity-90 text-white mt-[10%]">
         <section className="flex w-[30rem] flex-col space-y-10 p-10">
           <div className="text-center text-4xl font-medium">Sign Up</div>

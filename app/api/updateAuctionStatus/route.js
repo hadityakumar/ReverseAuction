@@ -13,12 +13,11 @@ export async function POST(req) {
     if (!auction) {
       return NextResponse.json({ error: 'Auction not found' }, { status: 404 });
     }
-    // If auction is ongoing, mark it as completed
+
     if (auction.status === 'ongoing') {
       auction.status = 'completed';
       await auction.save();
 
-      // Update products' auctionStatus to false after auction completion
       await Promise.all(
         auction.products.map(async (product) => {
           product.auctionStatus = false;

@@ -4,32 +4,44 @@ import { useState, useEffect } from 'react';
 export default function Auctions() {
     const [auctions, setAuctions] = useState([]);
     const [timeLeft, setTimeLeft] = useState({});
-    const token = localStorage.getItem('token');
-    const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    const buyerId = decodedToken.userId;
+    const [isClient, setIsClient] = useState(false); // State to check if it's running on the client side
 
     useEffect(() => {
+        setIsClient(true); // Set client-side check to true when component mounts
+    }, []);
+
+    useEffect(() => {
+        if (!isClient) return; // Only proceed if we are on the client side
+
+        const token = localStorage.getItem('token');
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const buyerId = decodedToken.userId;
+
         const fetchAuctions = async () => {
             const response = await fetch(`/api/auctions?buyerId=${buyerId}`, {
                 headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
             const data = await response.json();
             setAuctions([...data.auctions]);
 
-            const allAuctionsEnded = data.auctions.every(auction => auction.status === 'completed');
+            const allAuctionsEnded = data.auctions.every((auction) => auction.status === 'completed');
             if (allAuctionsEnded) {
-                clearInterval(intervalId); 
+                clearInterval(intervalId);
             }
         };
 
-        const intervalId = setInterval(fetchAuctions, 1000); 
+        const intervalId = setInterval(fetchAuctions, 1000);
 
-        return () => clearInterval(intervalId); 
-    }, [buyerId, token]);
+        return () => clearInterval(intervalId);
+    }, [isClient]); // Only runs when we are on the client side
 
     useEffect(() => {
+        if (!isClient) return; // Ensure the client-side check
+
+        const token = localStorage.getItem('token');
+
         const calculateTimeLeft = () => {
             auctions.forEach(async (auction) => {
                 const endTime = new Date(auction.endTime).getTime();
@@ -41,9 +53,9 @@ export default function Auctions() {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`
+                            Authorization: `Bearer ${token}`,
                         },
-                        body: JSON.stringify({ auctionId: auction._id })
+                        body: JSON.stringify({ auctionId: auction._id }),
                     });
                 }
             });
@@ -70,14 +82,14 @@ export default function Auctions() {
 
         if (auctions.length > 0) {
             calculateTimeLeft();
-            const interval = setInterval(calculateTimeLeft, 1000); 
-            return () => clearInterval(interval); 
+            const interval = setInterval(calculateTimeLeft, 1000);
+            return () => clearInterval(interval);
         }
-    }, [auctions]);
+    }, [isClient, auctions]);
 
     const getLowestBid = (bids) => {
         if (bids.length === 0) return null;
-        return bids.reduce((lowest, bid) => bid.amount < lowest.amount ? bid : lowest, bids[0]);
+        return bids.reduce((lowest, bid) => (bid.amount < lowest.amount ? bid : lowest), bids[0]);
     };
 
     return (

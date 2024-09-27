@@ -7,10 +7,8 @@ export default function Auctions() {
     const [auctions, setAuctions] = useState([]);
     const [timeLeft, setTimeLeft] = useState({});
     const [bidAmounts, setBidAmounts] = useState({});
-
-    const token = localStorage.getItem('token');
-    const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    const buyerId = decodedToken.userId;
+    const [token, setToken] = useState(null); // State for token
+    const [buyerId, setBuyerId] = useState(null); // State for buyerId
 
     const notify = () => toast.success('Bid Placed Successfully', {
         position: "top-right",
@@ -23,8 +21,20 @@ export default function Auctions() {
         theme: "dark",
     });
 
+    // Only run on the client
+    useEffect(() => {
+        // Access localStorage after the component has mounted
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken); // Set token in state
+            const decodedToken = JSON.parse(atob(storedToken.split('.')[1]));
+            setBuyerId(decodedToken.userId); // Set buyerId in state
+        }
+    }, []);
 
     const fetchAuctions = async () => {
+        if (!token || !buyerId) return;
+
         const response = await fetch(`/api/auctions?sellerId=${buyerId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -35,7 +45,9 @@ export default function Auctions() {
     };
 
     useEffect(() => {
-        fetchAuctions();
+        if (token && buyerId) {
+            fetchAuctions();
+        }
     }, [buyerId, token]);
 
     useEffect(() => {
@@ -72,7 +84,7 @@ export default function Auctions() {
 
     const handleBidSubmit = async (auctionId) => {
         const bidAmount = bidAmounts[auctionId];
-        if (!bidAmount) return;
+        if (!bidAmount || !token || !buyerId) return;
 
         try {
             const response = await fetch(`/api/auctions/bid`, {
