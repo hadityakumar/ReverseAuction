@@ -5,8 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store'
-export const revalidate = 0 
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
+export const runtime = 'edge';
 
 export default function BuyerDashboard() {
   const router = useRouter();
