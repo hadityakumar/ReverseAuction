@@ -20,6 +20,7 @@
 - **Product Management**: Sellers can add products and manage their listings.
 - **Real-time Bidding**: Auctions update in real time, allowing sellers to place competitive bids.
 - **Modern Design**: The website is designed with a futuristic look and feel, incorporating clean animations and a sleek UI.
+- **Automated Email Notifications**: Sellers are automatically notified via email when an auction starts, ensuring they don't miss any bidding opportunities.
 
 ## Tech Stack
 
