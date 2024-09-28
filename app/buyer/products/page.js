@@ -123,8 +123,10 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { cookies } from 'next/headers';
 
 export default function BuyerDashboard() {
+  cookies();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(''); 
 
