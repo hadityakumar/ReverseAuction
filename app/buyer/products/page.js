@@ -123,10 +123,9 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { cookies } from 'next/headers';
+import { unstable_noStore } from 'next/cache';
 
 export default function BuyerDashboard() {
-  cookies();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState(''); 
 
@@ -185,6 +184,7 @@ export default function BuyerDashboard() {
 
     // Fetch products and apply filtering
     const fetchProducts = async () => {
+      unstable_noStore();
       const response = await fetch('/api/products', { cache: 'no-store' });
       const data = await response.json();
       setProducts(data.products || []);
