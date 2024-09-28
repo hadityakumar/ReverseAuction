@@ -126,7 +126,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function BuyerDashboard() {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState(''); // Create a state for the search query
+  const [searchQuery, setSearchQuery] = useState(''); 
 
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);

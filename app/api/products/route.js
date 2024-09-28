@@ -3,6 +3,8 @@ import connectDB from '../../utils/connectDB';
 import Product from '../../models/Product';
 import User from '../../models/User';
 
+export const fetchCache = 'force-no-store';
+
 export async function GET() {
   await connectDB();
   
