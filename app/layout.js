@@ -14,6 +14,8 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+export const fetchCache = 'force-no-store';
+
 export const metadata = {
   title: "Jazzee",
   description: "A website for reverse auctions",

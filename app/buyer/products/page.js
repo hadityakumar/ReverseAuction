@@ -55,14 +55,13 @@ export default function BuyerDashboard() {
       setBuyerId(decodedToken.userId);
     }
 
-    // Function to update search query every 1000ms
+
     const interval = setInterval(() => {
-      const searchParams = new URLSearchParams(window.location.search); // Fetch search parameters directly
+      const searchParams = new URLSearchParams(window.location.search); 
       const search = searchParams.get('search');
       setSearchQuery(search || '');
-    }, 500); // 1000ms interval
+    }, 500); 
 
-    // Fetch products and apply filtering
     const fetchProducts = async () => {
       const response = await fetch('/api/products', { cache: 'no-store' });
       const data = await response.json();
@@ -81,8 +80,8 @@ export default function BuyerDashboard() {
 
     fetchProducts();
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, [searchQuery]); // Re-run whenever searchQuery is updated
+    return () => clearInterval(interval); 
+  }, [searchQuery]); 
 
   const handleProductSelect = (product) => {
     if (!product || !product.seller) return;
