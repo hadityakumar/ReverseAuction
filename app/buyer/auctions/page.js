@@ -4,14 +4,14 @@ import { useState, useEffect } from 'react';
 export default function Auctions() {
     const [auctions, setAuctions] = useState([]);
     const [timeLeft, setTimeLeft] = useState({});
-    const [isClient, setIsClient] = useState(false); // State to check if it's running on the client side
+    const [isClient, setIsClient] = useState(false); 
 
     useEffect(() => {
-        setIsClient(true); // Set client-side check to true when component mounts
+        setIsClient(true); 
     }, []);
 
     useEffect(() => {
-        if (!isClient) return; // Only proceed if we are on the client side
+        if (!isClient) return; 
 
         const token = localStorage.getItem('token');
         const decodedToken = JSON.parse(atob(token.split('.')[1]));

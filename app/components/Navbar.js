@@ -26,6 +26,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         router.push('/');
+        setIsLoggedIn(false);
     };
 
     const handleNavigation = (path) => {
@@ -76,24 +77,48 @@ const Navbar = () => {
             <ul className='flex gap-6'>
                 {isLoggedIn && (
                     <>
-                        <li className='hover:scale-125 cursor-pointer' onClick={() => handleNavigation('products')}>Products</li>
-                        <li className='hover:scale-125 cursor-pointer' onClick={() => handleNavigation('auctions')}>Auctions</li>
+                        <li className='group hover:scale-125 cursor-pointer' onClick={() => handleNavigation('products')}>
+                            <div className="relative overflow-hidden">
+                                <span className="block relative z-10 group-hover:text-white transition duration-500">
+                                    Products
+                                </span>
+                                <span className="absolute inset-x-0 bottom-0 h-[10%] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                            </div>
+                        </li>
+                        <li className='group hover:scale-125 cursor-pointer' onClick={() => handleNavigation('auctions')}>
+                            <div className="relative overflow-hidden">
+                                <span className="block relative z-10 group-hover:text-white transition duration-500">
+                                    Auctions
+                                </span>
+                                <span className="absolute inset-x-0 bottom-0 h-[10%] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                            </div>
+                        </li>
                     </>
                 )}
                 <Link href='/about'>
-                <li className='hover:scale-125'>About</li>
+                    <li className='group hover:scale-125'>
+                        <div className="relative overflow-hidden">
+                            <span className="block relative z-10 group-hover:text-white transition duration-500">
+                                About
+                            </span>
+                            <span className="absolute inset-x-0 bottom-0 h-[10%] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                        </div>
+                    </li>
                 </Link>
-                <li className='hover:scale-125'>FAQ</li>
+                <li className='group hover:scale-125'>
+                    <div className="relative overflow-hidden">
+                        <span className="block relative z-10 group-hover:text-white transition duration-500">
+                            FAQ
+                        </span>
+                        <span className="absolute inset-x-0 bottom-0 h-[10%] bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                    </div>
+                </li>
             </ul>
-
-
 
             <Link href='/' className='absolute left-1/2 transform -translate-x-1/2 flex'>
                 <img src="/logo.png" alt="logo" className='size-10' />
                 <h1 className='text-4xl font-mono'>JAZZEE</h1>
             </Link>
-
-
 
             <div className='flex items-center gap-4 ml-auto'>
                 <SearchBar />
