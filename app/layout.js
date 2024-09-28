@@ -27,11 +27,12 @@ export default function RootLayout({ children }) {
       >
         <CustomCursor />
         
+        <div className="fixed inset-0 -z-20 w-full h-full bg-gray-900" />
         <video 
           autoPlay 
           loop 
           muted 
-          preload="none"
+          preload="auto"
           className="fixed inset-0 -z-20 w-full h-full object-cover" // Added blur-sm
         >
           <source src="/bg3.mp4" type="video/mp4" />
