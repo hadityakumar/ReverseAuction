@@ -4,6 +4,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export default function BuyerDashboard() {
   const router = useRouter();
@@ -63,7 +66,7 @@ export default function BuyerDashboard() {
     }, 500); 
 
     const fetchProducts = async () => {
-      const response = await fetch('/api/products', { cache: 'no-store' });
+      const response = await fetch('/api/products', { cache: 'no-store', next: { revalidate: 0 }});
       const data = await response.json();
       setProducts(data.products || []);
 
