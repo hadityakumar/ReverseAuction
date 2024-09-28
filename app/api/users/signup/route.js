@@ -14,7 +14,6 @@ export async function POST(req) {
       userType,
       registeredProducts: [] 
     });
-    console.log("I created this user ", user.name);
     return NextResponse.json({ message: 'User created successfully' }, { status: 201 });
   } catch (error) {
 

@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Jazzee - Reverse Auction Platform
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-First, run the development server:
+## Introduction
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Jazzee** is a reverse auction platform that connects buyers and sellers. It provides a futuristic, modern interface with seamless user experience. Buyers can browse and select products, start auctions, and sellers can participate in real-time auctions by bidding lower prices until a winner is decided. The platform is fully responsive, optimized for performance, and deployed on [Vercel](https://reverseauction.vercel.app/).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **User Authentication**: Secure login and registration for both buyers and sellers.
+- **Search Bar**: Easily search for products from the available listings.
+- **Auction Functionality**: Buyers can initiate auctions, and sellers can bid live, with the lowest bid winning after a set time.
+- **Product Management**: Sellers can add products and manage their listings.
+- **Real-time Bidding**: Auctions update in real time, allowing sellers to place competitive bids.
+- **Modern Design**: The website is designed with a futuristic look and feel, incorporating clean animations and a sleek UI.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech Stack
 
-## Learn More
+- **Next.js**: Frontend framework for building fast and modern web applications.
+- **Node.js**: Backend runtime for handling server-side operations.
+- **Express**: Lightweight and fast web server framework for handling routes and API requests.
+- **MongoDB & Mongoose**: NoSQL database with Mongoose as an ODM for database operations.
+- **Tailwind CSS**: Utility-first CSS framework to build responsive and customizable designs.
+- **Vercel**: Platform for seamless deployment and scaling of Next.js applications.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project is deployed and can be accessed here: [Jazzee](https://reverseauction.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Connect
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/hadityakumar/) for any inquiries or feedback.
