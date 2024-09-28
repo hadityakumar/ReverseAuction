@@ -1,129 +1,9 @@
-// 'use client';
-// import { useState, useEffect, Suspense } from 'react';
-// import { useRouter, useSearchParams } from 'next/navigation';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// export default function BuyerDashboard() {
-//   const router = useRouter();
-//   const [searchQuery, setSearchQuery] = useState(''); // Create a state for the search query
-
-//   const [products, setProducts] = useState([]);
-//   const [filteredProducts, setFilteredProducts] = useState([]);
-//   const [selectedSellers, setSelectedSellers] = useState([]);
-//   const [selectedProducts, setSelectedProducts] = useState([]);
-//   const [buyerId, setBuyerId] = useState(null);
-
-//   const notifySuccess = () => toast.success('Auction started successfully', {
-//     position: "top-right",
-//     autoClose: 2000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: "dark",
-//   });
-
-//   const notifyError = () => toast.error('Please select exactly 3 products to start the auction', {
-//     position: "top-right",
-//     autoClose: 2000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: "dark",
-//   });
-
-//   const notifySellerError = () => toast.error('Please select different sellers for the products', {
-//     position: "top-right",
-//     autoClose: 2000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: "dark",
-//   });
-
-//   useEffect(() => {
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//       const decodedToken = JSON.parse(atob(token.split('.')[1]));
-//       setBuyerId(decodedToken.userId);
-//     }
-
-//     const searchParams = new URLSearchParams(window.location.search); // Fetch search parameters directly
-//     const search = searchParams.get('search');
-//     setSearchQuery(search || '');
-
-//     const fetchProducts = async () => {
-//       const response = await fetch('/api/products');
-//       const data = await response.json();
-//       setProducts(data.products || []); 
-
-//       if (searchQuery) {
-//         const filtered = (data.products || []).filter((product) =>
-//           product.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-//           product.description?.toLowerCase().includes(searchQuery.toLowerCase())
-//         );
-//         setFilteredProducts(filtered);
-//       } else {
-//         setFilteredProducts(data.products || []); 
-//       }
-//     };
-
-//     fetchProducts();
-//   }, [searchQuery]); 
-
-//   const handleProductSelect = (product) => {
-//     if (!product || !product.seller) return;
-
-//     setSelectedProducts((prevSelectedProducts) => {
-//       if (prevSelectedProducts.includes(product)) {
-//         return prevSelectedProducts.filter((p) => p !== product);
-//       }
-//       return [...prevSelectedProducts, product];
-//     });
-
-//     if (!selectedSellers.includes(product.seller._id)) {
-//       setSelectedSellers((prevSelectedSellers) => [...prevSelectedSellers, product.seller._id]);
-//     }
-//   };
-
-//   const startAuction = async () => {
-//     if (selectedProducts.length !== 3) {
-//       notifyError();
-//       return;
-//     }
-
-//     const response = await fetch('/api/auctions/start', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ buyer: buyerId, selectedSellers, selectedProducts }),
-//     });
-
-//     if (response.ok) {
-//       notifySuccess();
-//       setTimeout(() => {
-//         router.push('/buyer/auctions');
-//       }, 2000);
-//     } else {
-//       notifySellerError();
-//     }
-//   };
-
-
-
-
-
 'use client';
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { unstable_noStore } from 'next/cache';
+
 
 export default function BuyerDashboard() {
   const router = useRouter();
@@ -184,7 +64,6 @@ export default function BuyerDashboard() {
 
     // Fetch products and apply filtering
     const fetchProducts = async () => {
-      unstable_noStore();
       const response = await fetch('/api/products', { cache: 'no-store' });
       const data = await response.json();
       setProducts(data.products || []);
