@@ -183,7 +183,7 @@ export default function BuyerDashboard() {
 
     // Fetch products and apply filtering
     const fetchProducts = async () => {
-      const response = await fetch('/api/products');
+      const response = await fetch('/api/products', { cache: 'no-store' });
       const data = await response.json();
       setProducts(data.products || []);
 

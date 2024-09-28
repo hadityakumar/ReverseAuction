@@ -7,7 +7,6 @@ export async function GET() {
   await connectDB();
   
   try {
-    // Fetch products with seller details populated
     const products = await Product.find().populate('seller', 'name');
     return NextResponse.json({ products });
   } catch (error) {
