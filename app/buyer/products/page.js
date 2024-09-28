@@ -66,7 +66,7 @@ export default function BuyerDashboard() {
     }, 500); 
 
     const fetchProducts = async () => {
-      const response = await fetch('/api/products', { cache: 'no-store', next: { revalidate: 0 }});
+      const response = await fetch('/api/products', { cache: 'no-store'});
       const data = await response.json();
       setProducts(data.products || []);
 
