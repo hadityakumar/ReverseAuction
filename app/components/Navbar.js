@@ -117,7 +117,7 @@ const Navbar = () => {
 
             <Link href='/' className='absolute left-1/2 transform -translate-x-1/2 flex'>
                 <img src="/logo.png" alt="logo" className='size-10' />
-                <h1 className='text-4xl font-mono'>JAZZEE</h1>
+                <h1 className='text-4xl font-mono'>RAZZEE</h1>
             </Link>
 
             <div className='flex items-center gap-4 ml-auto'>
