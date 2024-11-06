@@ -19,7 +19,7 @@ export const fetchCache = 'force-no-store';
 export const revalidate = 0;
 
 export const metadata = {
-  title: "Jazzee",
+  title: "Razzee",
   description: "A website for reverse auctions",
 };
 

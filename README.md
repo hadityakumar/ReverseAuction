@@ -10,7 +10,7 @@
 
 ## Introduction
 
-**Jazzee** is a reverse auction platform that connects buyers and sellers. It provides a futuristic, modern interface with seamless user experience. Buyers can browse and select products, start auctions, and sellers can participate in real-time auctions by bidding lower prices until a winner is decided. The platform is fully responsive, optimized for performance, and deployed on [Vercel](https://reverseauction.vercel.app/).
+**Razzee** is a reverse auction platform that connects buyers and sellers. It provides a futuristic, modern interface with seamless user experience. Buyers can browse and select products, start auctions, and sellers can participate in real-time auctions by bidding lower prices until a winner is decided. The platform is fully responsive, optimized for performance, and deployed on [Vercel](https://reverseauction.vercel.app/).
 
 ## Features
 

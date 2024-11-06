@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <div className='font-mono h-full flex flex-col justify-center items-center text-center mt-64 p-8 bg-black bg-opacity-50'>
         <div className="animate-slidein300 opacity-0 flex">
-          <div className="text-4xl font-bold mb-4">Welcome to Jazzee</div>
+          <div className="text-4xl font-bold mb-4">Welcome to Razzee</div>
         </div>
 
         <h1 className="animate-slidein300 opacity-0 text-5xl font-bold mb-6">
